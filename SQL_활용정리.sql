@@ -99,8 +99,14 @@ insert into test values('yang2','!1111','윤호섭','M',19,'대구광역시');
 insert into test values('lee3','#3333',' 이수광','M',30,'서울특별시');
 insert into test values('an4','&4444','안여진','F', 24,'부산광역시');
 select * from test;
---10. update : '광역시' -> '시'로 데이터 변경
 
+delete from test ;
+--10. update : '광역시' -> '시'로 데이터 변경
+UPDATE test
+SET address = replace(address,'광역시','시')
+where address LIKE '%광역시';
+
+select * from test;
 --10번 변경문제. update : '광역시' -> '시'로 데이터 변경
 --(단, 서브쿼리 사용하여 해결하기)
 
@@ -113,6 +119,8 @@ where age < 20;
 --삽입할 데이터 : jun5 *5555 전상호  M 28 NULL
 
 --[1]
+delete test
+where ID='jun5';
 insert into test values('jun5','*5555','전상호','M',28,NULL);
 commit;
 --[2]확인은 이클립스에서
@@ -157,7 +165,18 @@ where table_name ='TEST';--반드시 테이블명은 대문자로
 --뷰? 하나 이상의 테이블이나 다른 뷰를 이용하여 생성되는 가상테이블
 --뷰는 복잡한 쿼리를 단순화 시킬수 있다.
 --뷰는 사용자에게 필요한 정보만 접근하도록 접근을 제한할 수 있다.
+create view viewTest
+AS
+select id, name, gender
+from test;
+--뷰 생성 확인 방법
+select view_name
+from USER_viewS;
+where view_name='VIEWTEST'
 
+--사용자가 소유한 뷰 이름 조회
+select view_name
+from USER_viewS;
 --------------------------------------------------------------------------------------------
 --18. test2 테이블 생성
 [테이블명 test2]
