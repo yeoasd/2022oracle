@@ -46,7 +46,7 @@ concat('Apple', '사과') as "함수 사용",--자바에서는 "Apple".concat("�
 'Apple' || '사과' || '맛있어' as "|| 사용"--자바에서는 "Apple" + "사과" + "맛있어"
 from dual;
 
---substr(기존문자열, 시작index, 추출할 개수) : 문자열의 일부만 추출하여 부분문자열을 만듬
+--substr(기존문자열, 시작index, 추출할 개수) :기존  문자열의 일부만 추출하여 부분문자열을 만듬
 --시작index : 음수이면 문자열의 마지막을 기준으로 거슬러 올라옴
 --인덱스(index) : 1 2 3... (※자바 index : 0 1 2...)
 select substr('apple mania', 7, 5),--'mania'
